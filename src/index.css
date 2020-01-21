@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app-calculator{
+  width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+#display {
+  background-color: gray;
+  height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#display > span {
+  align-self: center;
+  padding: 4px;
+}
