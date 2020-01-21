@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Button extends React.Component {
-  render() {
-    const { buttonName } = this.props;
-    return (
-      <button>
-        {buttonName}
-      </button>
-    );
-  }
+function Button({ buttonName }) {
+  return (
+    <button type="button">
+      {buttonName}
+    </button>
+  );
 }
 
 Button.propTypes = {
