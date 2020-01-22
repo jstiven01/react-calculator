@@ -1,11 +1,46 @@
-const calculate = ({total, next, operation}, buttonName) => {
-    const noDigits = ['AC','.','+/-','%','+','-','X','÷','='];
+import operate from './operate';
 
-    if(!noDigits.includes(buttonName)){
-        return {total: null, next: `${next ? next : ''}${buttonName}`, operation: null}
+const calculate = ({
+  total, next, operation, lastComputed,
+}, buttonName) => {
+  const noDigits = ['AC', '.', '+/-', '%', '+', '-', 'X', '÷', '='];
+
+  if (!noDigits.includes(buttonName)) {
+    if (!operation) {
+      return {
+        total: null, next: `${next || ''}${buttonName}`, operation: null, lastComputed: '',
+      };
     }
-    if(noDigits.includes(buttonName)) {
-        return {total: null, next: next, operation: buttonName}
+    if (operation && !total && lastComputed === '') {
+      return {
+        total: null, next: buttonName, operation, lastComputed: `${total || next}`,
+      };
     }
+    if (operation && total && lastComputed === '') {
+      return {
+        total: null, next: buttonName, operation, lastComputed: total,
+      };
+    }
+    if (operation && !total && lastComputed !== '') {
+      return {
+        total: null, next: `${next || ''}${buttonName}`, operation, lastComputed,
+      };
+    }
+  } else {
+    if (!operation) {
+      return {
+        total: null, next, operation: buttonName, lastComputed: `${total || ''}`,
+      };
+    }
+    if (operation) {
+      return {
+        total: operate(lastComputed, next, operation),
+        next: null,
+        operation: buttonName,
+        lastComputed: '',
+      };
+    }
+  }
+  return {};
 };
 export default calculate;
