@@ -30,7 +30,7 @@ test('Dividing by 0', () => {
   expect(result).toBe(null);
 });
 
-test('Percentage of number', () => {
+test('Percentage of a number', () => {
   const result = operate('53', null, '%');
   expect(result).toBe('0.53');
 });
