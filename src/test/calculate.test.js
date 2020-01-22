@@ -42,6 +42,16 @@ test('Two number buttons  in a row, an addition button and then a number button'
   });
 });
 
+test('Executing AC Operation', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: '+', lastComputed: '',
+  };
+  const result = calculate(calculatorObject, 'AC');
+  expect(result).toEqual({
+    total: null, next: null, operation: null, lastComputed: null,
+  });
+});
+
 
 test('Rendering the next operation 5 - 3 + 7 - 10 + ', () => {
   const calculatorObject = {
@@ -90,5 +100,40 @@ test('Rendering the next operation 5 - 3 + 7 - 10 + ', () => {
   const result9 = calculate(result8, '+');
   expect(result9).toEqual({
     total: '-1', next: null, operation: '+', lastComputed: '',
+  });
+});
+
+test('Adding decimal point without decimal number', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: '+', lastComputed: '5',
+  };
+  const result = calculate(calculatorObject, '.');
+  expect(result).toEqual({
+    total: null, next: '48.', operation: '+', lastComputed: '5',
+  });
+
+  const result2 = calculate(result, '-');
+  expect(result2).toEqual({
+    total: '53', next: null, operation: '-', lastComputed: '',
+  });
+});
+
+test('Adding decimal point with decimal number', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: '+', lastComputed: '5',
+  };
+  const result = calculate(calculatorObject, '.');
+  expect(result).toEqual({
+    total: null, next: '48.', operation: '+', lastComputed: '5',
+  });
+
+  const result2 = calculate(result, '3');
+  expect(result2).toEqual({
+    total: null, next: '48.3', operation: '+', lastComputed: '5',
+  });
+
+  const result3 = calculate(result2, '+');
+  expect(result3).toEqual({
+    total: '53.3', next: null, operation: '+', lastComputed: '',
   });
 });

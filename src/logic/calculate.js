@@ -27,6 +27,22 @@ const calculate = ({
       };
     }
   } else {
+    if (buttonName === 'AC') {
+      return {
+        total: null,
+        next: null,
+        operation: null,
+        lastComputed: null,
+      };
+    }
+    if (buttonName === '.') {
+      return {
+        total,
+        next: `${next || ''}${buttonName}`,
+        operation,
+        lastComputed,
+      };
+    }
     if (!operation) {
       return {
         total: null, next, operation: buttonName, lastComputed: `${total || ''}`,
