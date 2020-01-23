@@ -217,3 +217,39 @@ test('Computing Percentage and adding a number', () => {
     total: '-2.48', next: null, operation: '+', lastComputed: '',
   });
 });
+
+
+test('Using Equal Button', () => {
+  const calculatorObject = {
+    total: null, next: '-48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '÷');
+  expect(result).toEqual({
+    total: null, next: '-48', operation: '÷', lastComputed: '',
+  });
+
+  const result2 = calculate(result, '2');
+  expect(result2).toEqual({
+    total: null, next: '2', operation: '÷', lastComputed: '-48',
+  });
+
+  const result3 = calculate(result2, '=');
+  expect(result3).toEqual({
+    total: '-24', next: null, operation: null, lastComputed: '',
+  });
+
+  const result4 = calculate(result3, '+');
+  expect(result4).toEqual({
+    total: null, next: null, operation: '+', lastComputed: '-24',
+  });
+
+  const result5 = calculate(result4, '4');
+  expect(result5).toEqual({
+    total: null, next: '4', operation: '+', lastComputed: '-24',
+  });
+
+  const result6 = calculate(result5, 'X');
+  expect(result6).toEqual({
+    total: '-20', next: null, operation: 'X', lastComputed: '',
+  });
+});

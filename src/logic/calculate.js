@@ -59,6 +59,14 @@ const calculate = ({
         lastComputed,
       };
     }
+    if (buttonName === '=') {
+      return {
+        total: operate(lastComputed, next, operation),
+        next: null,
+        operation: null,
+        lastComputed: '',
+      };
+    }
     if (!operation) {
       return {
         total: null, next, operation: buttonName, lastComputed: `${total || ''}`,
