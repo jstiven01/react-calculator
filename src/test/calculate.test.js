@@ -182,3 +182,38 @@ test('converting positive number to negative number and doing multiplying', () =
     total: '-96', next: null, operation: '+', lastComputed: '',
   });
 });
+
+test('Computing Percentage', () => {
+  const calculatorObject = {
+    total: null, next: '-48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '%');
+  expect(result).toEqual({
+    total: null, next: '-0.48', operation: null, lastComputed: '',
+  });
+});
+
+test('Computing Percentage and adding a number', () => {
+  const calculatorObject = {
+    total: null, next: '-48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '%');
+  expect(result).toEqual({
+    total: null, next: '-0.48', operation: null, lastComputed: '',
+  });
+
+  const result2 = calculate(result, '-');
+  expect(result2).toEqual({
+    total: null, next: '-0.48', operation: '-', lastComputed: '',
+  });
+
+  const result3 = calculate(result2, '2');
+  expect(result3).toEqual({
+    total: null, next: '2', operation: '-', lastComputed: '-0.48',
+  });
+
+  const result4 = calculate(result3, '+');
+  expect(result4).toEqual({
+    total: '-2.48', next: null, operation: '+', lastComputed: '',
+  });
+});

@@ -51,6 +51,14 @@ const calculate = ({
         lastComputed,
       };
     }
+    if (buttonName === '%') {
+      return {
+        total,
+        next: operate(next, null, buttonName),
+        operation,
+        lastComputed,
+      };
+    }
     if (!operation) {
       return {
         total: null, next, operation: buttonName, lastComputed: `${total || ''}`,
