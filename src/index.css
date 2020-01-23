@@ -14,10 +14,11 @@ code {
 
 .app-calculator{
   width: 700px;
-  margin: auto;
+  margin: 5px auto;
   display: flex;
   flex-direction: column;
 }
+
 #display {
   background-color: gray;
   height: 100px;
@@ -41,6 +42,7 @@ code {
 button {
   width: 25%;
   font-size: 18px;
+  border: black solid 1px;
 }
 
 .color-button-gray {
