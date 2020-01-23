@@ -43,6 +43,14 @@ const calculate = ({
         lastComputed,
       };
     }
+    if (buttonName === '+/-') {
+      return {
+        total,
+        next: `${next * -1}`,
+        operation,
+        lastComputed,
+      };
+    }
     if (!operation) {
       return {
         total: null, next, operation: buttonName, lastComputed: `${total || ''}`,

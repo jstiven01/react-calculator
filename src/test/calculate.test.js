@@ -137,3 +137,48 @@ test('Adding decimal point with decimal number', () => {
     total: '53.3', next: null, operation: '+', lastComputed: '',
   });
 });
+
+test('converting positive number to negative number', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '+/-');
+  expect(result).toEqual({
+    total: null, next: '-48', operation: null, lastComputed: '',
+  });
+});
+
+test('converting negative number to positive number', () => {
+  const calculatorObject = {
+    total: null, next: '-48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '+/-');
+  expect(result).toEqual({
+    total: null, next: '48', operation: null, lastComputed: '',
+  });
+});
+
+test('converting positive number to negative number and doing multiplying', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '+/-');
+  expect(result).toEqual({
+    total: null, next: '-48', operation: null, lastComputed: '',
+  });
+
+  const result2 = calculate(result, 'X');
+  expect(result2).toEqual({
+    total: null, next: '-48', operation: 'X', lastComputed: '',
+  });
+
+  const result3 = calculate(result2, '2');
+  expect(result3).toEqual({
+    total: null, next: '2', operation: 'X', lastComputed: '-48',
+  });
+
+  const result4 = calculate(result3, '+');
+  expect(result4).toEqual({
+    total: '-96', next: null, operation: '+', lastComputed: '',
+  });
+});
