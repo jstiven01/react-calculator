@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app-calculator{
+  width: 700px;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#display {
+  background-color: gray;
+  height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#display > span {
+  align-self: center;
+  padding: 4px;
+}
+
+.row-buttons {
+  height: 100px;
+  display: flex;
+}
+
+button {
+  width: 25%;
+  font-size: 18px;
+  border: black solid 1px;
+}
+
+.color-button-gray {
+  background-color: lightgray;
+}
+.color-button-orange {
+  background-color: orange;
+}
+.wide-twice {
+  width: 50%;
+}

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 function Display({ result }) {
   return (
-    <div>
-      {result}
+    <div id="display">
+      <span>{result}</span>
     </div>
   );
 }
