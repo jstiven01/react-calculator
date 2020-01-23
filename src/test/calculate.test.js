@@ -253,3 +253,13 @@ test('Using Equal Button', () => {
     total: '-20', next: null, operation: 'X', lastComputed: '',
   });
 });
+
+test('Using equal button with a single number', () => {
+  const calculatorObject = {
+    total: null, next: '-48', operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '=');
+  expect(result).toEqual({
+    total: null, next: '-48', operation: null, lastComputed: '',
+  });
+});
