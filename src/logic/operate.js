@@ -1,4 +1,4 @@
-const Big = require('big.js');
+import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
   let result;
