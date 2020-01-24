@@ -1,21 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button({ buttonName, color, wide }) {
-  let classWide = '';
-  if (wide) classWide = 'wide-twice';
+class Button extends React.Component {
+  handleClick = () => {
+    const { clickHandler, buttonName } = this.props;
+    return clickHandler(buttonName);
+  }
 
-  return (
-    <button className={`color-button-${color} ${classWide}`} type="button">
-      {buttonName}
-    </button>
-  );
+  render() {
+    const { color, buttonName, wide } = this.props;
+    let classWide = '';
+    if (wide) classWide = 'wide-twice';
+
+    return (
+      <button
+        className={`color-button-${color} ${classWide}`}
+        type="button"
+        onClick={this.handleClick}
+      >
+        {buttonName}
+      </button>
+    );
+  }
 }
 
 Button.propTypes = {
   buttonName: PropTypes.string.isRequired,
   color: PropTypes.string,
   wide: PropTypes.bool,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {

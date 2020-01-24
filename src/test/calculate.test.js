@@ -138,6 +138,16 @@ test('Adding decimal point with decimal number', () => {
   });
 });
 
+test('Adding decimal point with when next is null', () => {
+  const calculatorObject = {
+    total: null, next: null, operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '.');
+  expect(result).toEqual({
+    total: null, next: '0.', operation: null, lastComputed: '',
+  });
+});
+
 test('converting positive number to negative number', () => {
   const calculatorObject = {
     total: null, next: '48', operation: null, lastComputed: '',
@@ -261,5 +271,20 @@ test('Using equal button with a single number', () => {
   const result = calculate(calculatorObject, '=');
   expect(result).toEqual({
     total: null, next: '-48', operation: null, lastComputed: '',
+  });
+});
+
+test('Division by 0', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: '÷', lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '0');
+  expect(result).toEqual({
+    total: null, next: '0', operation: '÷', lastComputed: '48',
+  });
+
+  const result2 = calculate(result, '+');
+  expect(result2).toEqual({
+    total: 'division by zero error', next: null, operation: '+', lastComputed: '',
   });
 });

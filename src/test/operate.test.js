@@ -27,7 +27,7 @@ test('Dividing two numbers that will have a decimal part', () => {
 
 test('Dividing by 0', () => {
   const result = operate('24', '0', '÷');
-  expect(result).toBe(null);
+  expect(result).toBe('division by zero error');
 });
 
 test('Percentage of a number', () => {
