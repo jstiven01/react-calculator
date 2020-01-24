@@ -38,7 +38,7 @@ const calculate = ({
     if (buttonName === '.') {
       return {
         total,
-        next: `${next || ''}${buttonName}`,
+        next: `${next || '0'}${buttonName}`,
         operation,
         lastComputed,
       };

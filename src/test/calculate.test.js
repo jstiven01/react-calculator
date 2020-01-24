@@ -138,6 +138,16 @@ test('Adding decimal point with decimal number', () => {
   });
 });
 
+test('Adding decimal point with when next is null', () => {
+  const calculatorObject = {
+    total: null, next: null, operation: null, lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '.');
+  expect(result).toEqual({
+    total: null, next: '0.', operation: null, lastComputed: '',
+  });
+});
+
 test('converting positive number to negative number', () => {
   const calculatorObject = {
     total: null, next: '48', operation: null, lastComputed: '',
