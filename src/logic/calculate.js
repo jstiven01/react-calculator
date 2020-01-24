@@ -61,8 +61,8 @@ const calculate = ({
     }
     if (buttonName === '=') {
       return {
-        total: operate(lastComputed, next, operation),
-        next: null,
+        total: lastComputed !== '' ? operate(lastComputed, next, operation) : null,
+        next: lastComputed === '' ? next : null,
         operation: null,
         lastComputed: '',
       };
