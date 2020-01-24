@@ -16,7 +16,7 @@ const operate = (numberOne, numberTwo, operation) => {
       try {
         result = Big(numberOne).div(Big(numberTwo));
       } catch (error) {
-        result = null;
+        result = 'division by zero error';
       }
       break;
     case '%':
@@ -25,6 +25,6 @@ const operate = (numberOne, numberTwo, operation) => {
     default:
       break;
   }
-  return result ? result.toString() : result;
+  return result.toString();
 };
 export default operate;

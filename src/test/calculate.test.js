@@ -273,3 +273,18 @@ test('Using equal button with a single number', () => {
     total: null, next: '-48', operation: null, lastComputed: '',
   });
 });
+
+test('Division by 0', () => {
+  const calculatorObject = {
+    total: null, next: '48', operation: '÷', lastComputed: '',
+  };
+  const result = calculate(calculatorObject, '0');
+  expect(result).toEqual({
+    total: null, next: '0', operation: '÷', lastComputed: '48',
+  });
+
+  const result2 = calculate(result, '+');
+  expect(result2).toEqual({
+    total: 'division by zero error', next: null, operation: '+', lastComputed: '',
+  });
+});
