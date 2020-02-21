@@ -2,12 +2,16 @@
 
 > This project is about implementing a Calculator using React. You can find more about the requirements [here](https://github.com/microverseinc/project-react-calculator/blob/master/README.md).
 
+<img src='./docs/Screenshot.png'/>
+
 ## Built With
 
 - Node.js
 - React
 - React-DOM
 - React-Create-App
+- Material UI
+- React Spring
 - npm
 - CSS
 - ES6
