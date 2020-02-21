@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unused-state */
 
 import React from 'react';
+import Card from '@material-ui/core/Card';
 import Display from './Display';
 import ButtonPanel from './ButtonPanel';
 import calculate from '../logic/calculate';
+
 
 class App extends React.Component {
   constructor() {
@@ -24,8 +26,10 @@ class App extends React.Component {
     const { total, next } = this.state;
     return (
       <div className="app-calculator">
-        <Display result={total || next || undefined} />
-        <ButtonPanel clickHandler={this.handleClick} />
+        <Card>
+          <Display result={total || next || undefined} />
+          <ButtonPanel clickHandler={this.handleClick} />
+        </Card>
       </div>
     );
   }
